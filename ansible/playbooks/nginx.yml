@@ -1,0 +1,23 @@
+---
+- name: Install nginx and optionally change welcome message in index.html
+  hosts: all
+  sudo: true
+  handlers:
+    - name: restart nginx
+      service: name=nginx enabled=yes state=restarted
+      sudo_user: root
+  tasks:
+    - name: Install nginx
+      apt: name=nginx state=present
+      notify:
+        - restart nginx
+
+    - name: Change nginx welcome message
+      lineinfile:
+        dest=/usr/share/nginx/html/index.html
+        regexp="<h1>.*</h1>"
+        line="<h1>Hi {{ welcome_name }}, welcome to {{ ansible_hostname }}!</h1>"
+      when: welcome_name is defined
+
+    - name: Ensure nginx is running (and enable it at boot)
+      service: name=nginx state=started enabled=yes

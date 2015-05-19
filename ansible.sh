@@ -28,19 +28,18 @@ echo "+-------------------------------------------------------------------------
 st2 run ansible.command_local module-name=apt args='name=sshpass state=present'
 
 echo "+-------------------------------------------------------------------------------------------+"
-echo "|                        Create '/etc/ansible' directory                                    |"
-echo "+-------------------------------------------------------------------------------------------+"
-echo "| ansible all -c local -i '127.0.0.1,' -m file -a 'path=/etc/ansible state=directory'       |"
-echo "|  -->                                                                                      |"
-echo "| st2 run ansible.command_local module-name=file args='path=/etc/ansible state=directory'   |"
-echo "+-------------------------------------------------------------------------------------------+"
-st2 run ansible.command_local module-name=file args='path=/etc/ansible state=directory'
-
-echo "+-------------------------------------------------------------------------------------------+"
 echo "|           Copy config files from vagrant shared directory to '/etc/ansible'               |"
 echo "+-------------------------------------------------------------------------------------------+"
-st2 run ansible.command_local module-name=copy args='src=/vagrant/ansible/hosts dest=/etc/ansible/hosts 0644'
-st2 run ansible.command_local module-name=copy args='src=/vagrant/ansible/ansible.cfg dest=/etc/ansible/ansible.cfg 0644'
+echo "| ansible all -c local -i '127.0.0.1,' \                                                    |"
+echo "|   -m synchronize -a 'src=/vagrant/ansible/ dest=/etc/ansible'                             |"
+echo "|  -->                                                                                      |"
+echo "| st2 run ansible.command_local \                                                           |"
+echo "|   module-name=synchronize args='src=/vagrant/ansible/ dest=/etc/ansible'                  |"
+echo "+-------------------------------------------------------------------------------------------+"
+st2 run ansible.command_local module-name=synchronize args='src=/vagrant/ansible/ dest=/etc/ansible'
+chown -R root:root /etc/ansible
+chmod -R 755 /etc/ansible
+chmod 640 $(find /etc/ansible -type f)
 
 
 echo "#############################################################################################"

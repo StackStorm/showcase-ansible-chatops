@@ -12,10 +12,15 @@ To provision the environment run:
 
     vagrant up
 
-> Check the results of performed commands:  
+> Check the results of performed commands in StackStorm control panel:  
 http://www.master:8080/
-username: `testu` 
-password: `testp` 
+username: `testu`
+password: `testp`
+
+Don't forget to visit: 
+* http://www.master/
+* http://www.node1/
+* http://www.node2/
 
 ### Explanation
 Everything below is performed as part of Vagrant provision:
@@ -25,6 +30,8 @@ Everything below is performed as part of Vagrant provision:
 * Copy ansible configuration files from vagrant shared directory into '/etc/ansible' on `master`
 * Test `ansible.command_local` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against local `master` machine
 * Test `ansible.command` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against both local `master` and remote `node1` `node2` machines
+* Test `ansible.playbook` action, run [nginx.yml playbook](ansible/playbook/nginx.yml) against all machines
+* Let the nginx on latest node greet your cat (what?!), have fun
 
 Some of the commands: 
 ```sh
@@ -37,7 +44,14 @@ st2 run ansible.command hosts=all args='hostname -i'
 # Ping all machines in 'nodes' group
 st2 run ansible.command hosts=nodes module-name=ping
 
+# Install nginx via playbook on all machines 
+st2 run ansible.playbook playbook=/etc/ansible/playbooks/nginx.yml
+
+# Run nginx playbook on latest node machine, set nginx index.html welcome message
+st2 run ansible.playbook playbook=/etc/ansible/playbooks/nginx.yml extra-vars='welcome_name=Tom' limit='nodes[-1]'
+
 ...
 ```
 
-For more info see: [`ansible.sh`](ansible.sh), which is usual Vagrant shell provision script.
+For all commands executed see: [`ansible.sh`](ansible.sh) and [`ansible-playbook.sh`](ansible-playbook.sh),
+which are usual Vagrant shell provisioner scripts.
