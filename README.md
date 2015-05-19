@@ -1,4 +1,4 @@
-st2 Vagrant with Ansible demo
+StackStorm with Ansible on Vagrant demo
 ===========
 
 ###Introduction
@@ -30,7 +30,7 @@ Everything below is performed as part of Vagrant provision:
 * Copy ansible configuration files from vagrant shared directory into '/etc/ansible' on `master`
 * Test `ansible.command_local` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against local `master` machine
 * Test `ansible.command` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against both local `master` and remote `node1` `node2` machines
-* Test `ansible.playbook` action, run [nginx.yml playbook](ansible/playbook/nginx.yml) against all machines
+* Test `ansible.playbook` action, run [nginx.yml playbook](ansible/playbooks/nginx.yml) against all machines
 * Let the nginx on latest node greet your cat (what?!), have fun
 
 Some of the commands: 
