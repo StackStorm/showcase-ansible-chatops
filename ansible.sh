@@ -64,14 +64,5 @@ echo "| st2 run ansible.command hosts=nodes module-name=ping                    
 echo "+-------------------------------------------------------------------------------------------+"
 st2 run ansible.command hosts=nodes module-name=ping
 
-echo "+-------------------------------------------------------------------------------------------------+"
-echo "|                   Uninstall 'screen' package on 'nodes', run with sudo                          |"
-echo "+-------------------------------------------------------------------------------------------------+"
-echo "| ansible nodes --become -m apt -a 'name=screen state=absent'                                     |"
-echo "|  -->                                                                                            |"
-echo "| st2 run ansible.command hosts=nodes become=true module-name=apt args='name=screen state=absent' |"
-echo "+-------------------------------------------------------------------------------------------------+"
-st2 run ansible.command hosts=nodes become=true module-name=apt args='name=screen state=absent'
-
 echo "Done!"
 exit 0

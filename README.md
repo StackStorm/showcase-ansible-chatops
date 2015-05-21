@@ -30,6 +30,8 @@ Everything below is performed as part of Vagrant provision:
 * Copy ansible configuration files from vagrant shared directory into '/etc/ansible' on `master`
 * Test `ansible.command_local` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against local `master` machine
 * Test `ansible.command` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against both local `master` and remote `node1` `node2` machines
+* Test `ansible.galaxy` actions, install, list and then remove roles installed from [Ansible Galaxy](https://galaxy.ansible.com/)
+* Test `ansible.vault` actions, encrypt/decrypt playbooks and run them
 * Test `ansible.playbook` action, run [nginx.yml playbook](ansible/playbooks/nginx.yml) against all machines
 * Let the nginx on latest node greet your cat (what?!), have fun
 
@@ -53,5 +55,5 @@ st2 run ansible.playbook playbook=/etc/ansible/playbooks/nginx.yml extra-vars='w
 ...
 ```
 
-For all commands executed see: [`ansible.sh`](ansible.sh) and [`ansible-playbook.sh`](ansible-playbook.sh),
+For all commands executed see: [`ansible.sh`](ansible.sh), [`ansible-galaxy.sh`](ansible-galaxy.sh), [`ansible-vault.sh`](ansible-vault.sh) and [`ansible-playbook.sh`](ansible-playbook.sh),
 which are usual Vagrant shell provisioner scripts.

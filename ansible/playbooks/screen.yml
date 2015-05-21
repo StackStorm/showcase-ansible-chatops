@@ -1,0 +1,7 @@
+---
+- name: Uninstall screen package
+  hosts: all
+  sudo: true
+  tasks:
+    - name: Uninstall screen
+      apt: name=screen state=absent

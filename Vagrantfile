@@ -57,6 +57,8 @@ Vagrant.configure(2) do |config|
         vm_config.vm.provision :shell, :path => "rsyslog.sh"
         vm_config.vm.provision :shell, :inline => "INSTALL_WEBUI=1 bash -c '/vagrant/validate.sh'"
         vm_config.vm.provision :shell, :path => "ansible.sh"
+        vm_config.vm.provision :shell, :path => "ansible-galaxy.sh"
+        vm_config.vm.provision :shell, :path => "ansible-vault.sh"
         vm_config.vm.provision :shell, :path => "ansible-playbook.sh"
       end
     end
