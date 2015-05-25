@@ -4,7 +4,10 @@ set -e
 export ST2_AUTH_TOKEN=`st2 auth testu -p testp -l 6000 | grep token | awk '{print $4}'`
 
 echo "############################## Install st2 Ansible pack #####################################"
-st2 run packs.install packs=ansible repo_url=https://github.com/armab/st2contrib.git branch=feature/ansible
+# custom repo
+#st2 run packs.install packs=ansible repo_url=https://github.com/armab/st2contrib.git branch=feature/ansible
+# official repo
+st2 run packs.install packs=ansible
 
 echo "#############################################################################################"
 echo "############################ Test Ansible Local Actions ... #################################"
