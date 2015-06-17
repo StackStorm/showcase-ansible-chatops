@@ -18,7 +18,7 @@ As a result you should get ready environment allowing you to execute [Ansible ad
 * Navigate `Configure Integrations -> Filter -> Hubot` and generate Slack & Hubot API Token.
 
 #### 2. Vagrant up
-Edit [`Vagrantfile`](Vagrantfile) and place just generated API token under `HUBOT_SLACK_TOKEN` constant.
+Edit [`Vagrantfile`](Vagrantfile#L5) and place just generated API token under `HUBOT_SLACK_TOKEN` constant.
 To provision the environment run:
 ```sh
 vagrant up
