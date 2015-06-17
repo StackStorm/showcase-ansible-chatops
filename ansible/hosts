@@ -3,6 +3,8 @@
 [chatops]
 localhost ansible_connection=local
 
-[nodes]
-; 2 nodes
-node[1:2] ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+[web]
+web ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+[db]
+db ansible_ssh_user=vagrant ansible_ssh_pass=vagrant

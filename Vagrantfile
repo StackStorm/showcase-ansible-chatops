@@ -6,13 +6,13 @@ HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
 ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'latest'
 
 VIRTUAL_MACHINES = {
-  :node1 => {
+  :web => {
     :ip => '192.168.90.61',
-    :hostname => 'node1',
+    :hostname => 'web',
   },
-  :node2 => {
+  :db => {
     :ip => '192.168.90.62',
-    :hostname => 'node2',
+    :hostname => 'db',
   },
   :chatops => {
     :ip => '192.168.90.60',
