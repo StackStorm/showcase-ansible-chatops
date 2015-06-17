@@ -44,4 +44,4 @@ Feel the power of control center and may the force will be with you!
 We're always ready to help, feel free to:
 * ask questions on [IRC: #stackStorm on freenode.net](http://webchat.freenode.net/?channels=stackstorm)
 * report bug, provide feature request on [GitHub st2](https://github.com/StackStorm/st2)
-* share your st2 story, [email us](support@stackstorm.com)
+* share your st2 story, [email us](mailto:support@stackstorm.com)
