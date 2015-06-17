@@ -1,6 +1,6 @@
 ; http://docs.ansible.com/intro_inventory.html
 
-[master]
+[chatops]
 localhost ansible_connection=local
 
 [nodes]

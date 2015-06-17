@@ -1,20 +1,22 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-st2ver = ENV['ST2VER'] ? ENV['ST2VER'] : 'latest'
+# Set Hubot Slack Token here
+HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
+ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'latest'
 
 VIRTUAL_MACHINES = {
   :node1 => {
-    :ip => '192.168.90.51',
+    :ip => '192.168.90.61',
     :hostname => 'node1',
   },
   :node2 => {
-    :ip => '192.168.90.52',
+    :ip => '192.168.90.62',
     :hostname => 'node2',
   },
-  :master => {
-    :ip => '192.168.90.50',
-    :hostname => 'master',
+  :chatops => {
+    :ip => '192.168.90.60',
+    :hostname => 'chatops',
   },
 }
 
@@ -23,6 +25,12 @@ VIRTUAL_MACHINES = {
 unless Vagrant.has_plugin?('vagrant-hostmanager')
   system('vagrant plugin install vagrant-hostmanager') || exit!
   exit system('vagrant', *ARGV)
+end
+
+unless HUBOT_SLACK_TOKEN.start_with?('xoxb-')
+  puts "Error! HUBOT_SLACK_TOKEN is required."
+  puts "Please specify it in Vagrantfile."
+  exit
 end
 
 Vagrant.configure(2) do |config|
@@ -46,20 +54,18 @@ Vagrant.configure(2) do |config|
 
       vm_config.vm.provision :hostmanager
 
-      # Additional rules for master
-      if name == :master
+      # Additional rules for chatops server
+      if name == :chatops
         vm_config.vm.provider :virtualbox do |vb|
           vb.memory = 2048
         end
-        # Start shell provisioning for master
+        # Start shell provisioning for chatops server
         vm_config.vm.provision :shell, :inline => "curl -sS -k -O https://downloads.stackstorm.net/releases/st2/scripts/st2_deploy.sh"
-        vm_config.vm.provision :shell, :inline => "INSTALL_WEBUI=1 bash -c '. st2_deploy.sh #{st2ver}'"
+        vm_config.vm.provision :shell, :inline => "INSTALL_WEBUI=1 bash -c '. st2_deploy.sh #{ST2VER}'"
         vm_config.vm.provision :shell, :path => "rsyslog.sh"
         vm_config.vm.provision :shell, :inline => "INSTALL_WEBUI=1 bash -c '/vagrant/validate.sh'"
         vm_config.vm.provision :shell, :path => "ansible.sh"
-        vm_config.vm.provision :shell, :path => "ansible-galaxy.sh"
-        vm_config.vm.provision :shell, :path => "ansible-vault.sh"
-        vm_config.vm.provision :shell, :path => "ansible-playbook.sh"
+        vm_config.vm.provision :shell, :inline => "HUBOT_SLACK_TOKEN=#{HUBOT_SLACK_TOKEN} bash -c '/vagrant/hubot.sh'"
       end
     end
   end

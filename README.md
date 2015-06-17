@@ -1,59 +1,47 @@
-StackStorm with Ansible on Vagrant demo
+Ansible ChatOps with Slack, Hubot and StackStorm - Vagrant demo
 ===========
 
-###Introduction
-This is quick demonstration of the [StackStorm](http://stackstorm.com/) automation platform running with Ansible configuration management pack.
+### Introduction
+This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-driven automation platform running with [Ansible](http://ansible.com/) configuration management tool and [Hubot](https://hubot.github.com/) ChatOps engine. The objective is to operate servers with Ansible directly from [Slack](http://slack.com/) chat.
 
-It will get you up and running with `master` VM running all St2 components as well as Ansible.
-Additionally, it installs 2 clean Ubuntu VMs: `node1`, `node2` and performs ansible commands against them.
+![Ansible and ChatOps with Slack and Hubot](http://i.imgur.com/HWN8T78.png)
 
-### Instructions
+It will get you up and running with `chatops` control VM with all St2 components prepared as well as Ansible and Hubot configured.
+Additionally, it installs 2 clean Ubuntu VMs: `node1`, `node2`.
+
+As a result you should get ready environment allowing you to execute [Ansible ad-hoc commands](http://docs.ansible.com/intro_adhoc.html) and run [Ansible playbooks](http://docs.ansible.com/playbooks.html) against VMs directly from your Slack chat.
+
+### Getting started
+
+#### 1. Prepare Slack
+* Create [slack.com](http://slack.com/) account if you don't have it yet.
+* Navigate `Configure Integrations -> Filter -> Hubot` and generate Slack & Hubot API Token.
+
+#### 2. Vagrant up
+Edit [`Vagrantfile`](Vagrantfile) and place just generated API token under `HUBOT_SLACK_TOKEN` constant.
 To provision the environment run:
+```sh
+vagrant up
+```
 
-    vagrant up
-
-> Check the results of performed commands in StackStorm control panel:  
-http://www.master:8080/
+#### 3. Try ChatOps
+If you can see your bot online in Slack, you're ready to type some chat commands. Don't forget to invite your bot first into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
+```
+!help
+```
+![Ansible ChatOps with StackStorm, Hubot and Slack](http://i.imgur.com/y0Vb6jp.png)
+> Additionally check the results of performed commands in StackStorm control panel:  
+http://www.chatops:8080/
 username: `testu`
 password: `testp`
 
-Don't forget to visit: 
-* http://www.master/
-* http://www.node1/
-* http://www.node2/
+#### 4. Don't stop!
+Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`hubot.sh`](hubot.sh) which are usual Vagrant shell provisioner scripts. Integrate your custom workflows and deployment mechanisms, you'll see how your work would become more efficient during time.
 
-### Explanation
-Everything below is performed as part of Vagrant provision:
+Feel the power of control center and may the force will be with you!
 
-* Install st2 platform and verify installation 
-* Install st2 `ansible` pack from remote repository
-* Copy ansible configuration files from vagrant shared directory into '/etc/ansible' on `master`
-* Test `ansible.command_local` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against local `master` machine
-* Test `ansible.command` actions ([ad-hoc](http://docs.ansible.com/intro_adhoc.html) ansible command) against both local `master` and remote `node1` `node2` machines
-* Test `ansible.galaxy` actions, install, list and then remove roles installed from [Ansible Galaxy](https://galaxy.ansible.com/)
-* Test `ansible.vault` actions, encrypt/decrypt playbooks and run them
-* Test `ansible.playbook` action, run [nginx.yml playbook](ansible/playbooks/nginx.yml) against all machines
-* Let the nginx on latest node greet your cat (what?!), have fun
-
-Some of the commands: 
-```sh
-# Run simple ansible.command locally
-st2 run ansible.command_local args='echo $TERM'
-
-# Run 'hostname -i' ansible.command on all machines (master and nodes) 
-st2 run ansible.command hosts=all args='hostname -i'
-
-# Ping all machines in 'nodes' group
-st2 run ansible.command hosts=nodes module-name=ping
-
-# Install nginx via playbook on all machines 
-st2 run ansible.playbook playbook=/etc/ansible/playbooks/nginx.yml
-
-# Run nginx playbook on latest node machine, set nginx index.html welcome message
-st2 run ansible.playbook playbook=/etc/ansible/playbooks/nginx.yml extra-vars='welcome_name=Tom' limit='nodes[-1]'
-
-...
-```
-
-For all commands executed see: [`ansible.sh`](ansible.sh), [`ansible-galaxy.sh`](ansible-galaxy.sh), [`ansible-vault.sh`](ansible-vault.sh) and [`ansible-playbook.sh`](ansible-playbook.sh),
-which are usual Vagrant shell provisioner scripts.
+----
+We're always ready to help, feel free to:
+* ask questions on [IRC: #stackStorm on freenode.net](http://webchat.freenode.net/?channels=stackstorm)
+* report bug, provide feature request on [GitHub st2](https://github.com/StackStorm/st2)
+* share your st2 story, [email us](support@stackstorm.com)
