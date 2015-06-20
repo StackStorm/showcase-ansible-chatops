@@ -7,19 +7,19 @@ echo "############################# Prepare Hubot and StackStorm ###############
 st2 run packs.install packs=hubot register=all
 
 # Install Hubot dependencies
-sudo apt-get install -y build-essential redis-server
+apt-get install -y build-essential redis-server
 
 # Install Nodejs and npm
 curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
-sudo apt-get install -y nodejs
+apt-get install -y nodejs
 
 # Install Hubot
-sudo npm install -g hubot coffee-script yo generator-hubot
+npm install -g hubot coffee-script yo generator-hubot
 
 # Prepare hubot installation from stanley linux user, previously created by StackStorm
 # we will run chatops commands from that user
-sudo mkdir -p /opt/hubot
-sudo chown stanley:stanley /opt/hubot
+mkdir -p /opt/hubot
+chown stanley:stanley /opt/hubot
 
 # Generate Hubot config under /opt/hubot
 sudo -H -u stanley bash -c 'cd /opt/hubot && echo "n" | yo hubot --name=stanley --description="Stanley StackStorm bot" --defaults'
@@ -32,7 +32,7 @@ grep -q 'hubot-stackstorm' /opt/hubot/external-scripts.json || sed -i 's/.*\[.*/
 
 # Create upstart script
 cp /vagrant/hubot/hubot.conf /etc/init/hubot.conf
-sudo chmod -x /etc/init/hubot.conf
+chmod -x /etc/init/hubot.conf
 
 # Save HUBOT_SLACK_TOKEN into /etc/init/hubot.conf if not present
 grep -q "HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}" /etc/init/hubot.conf || sed -i "s/HUBOT_SLACK_TOKEN.*/HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}/" /etc/init/hubot.conf

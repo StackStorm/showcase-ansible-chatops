@@ -54,6 +54,14 @@ Vagrant.configure(2) do |config|
 
       vm_config.vm.provision :hostmanager
 
+      if name == :web
+        vm_config.vm.provision :shell, :path => "web.sh"
+      end
+
+      if name == :db
+        vm_config.vm.provision :shell, :path => "db.sh"
+      end
+
       # Additional rules for chatops server
       if name == :chatops
         vm_config.vm.provider :virtualbox do |vb|

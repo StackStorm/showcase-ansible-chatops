@@ -1,4 +1,4 @@
-Ansible ChatOps with Slack, Hubot and StackStorm - Vagrant demo
+Ansible & ChatOps with Slack, Hubot and StackStorm - Vagrant demo
 ===========
 
 ### Introduction
@@ -7,7 +7,7 @@ This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-dr
 ![Ansible and ChatOps with Slack and Hubot](http://i.imgur.com/HWN8T78.png)
 
 It will get you up and running with `chatops` control VM with all St2 components prepared as well as Ansible and Hubot configured.
-Additionally, it installs 2 clean Ubuntu VMs: `web` server and `db` server.
+Additionally, it installs 2 Ubuntu VMs: `web` server with nginx and `db` server with mysql.
 
 As a result you should get ready environment allowing you to execute [Ansible ad-hoc commands](http://docs.ansible.com/intro_adhoc.html) and run [Ansible playbooks](http://docs.ansible.com/playbooks.html) against VMs directly from your Slack chat.
 
@@ -25,7 +25,7 @@ vagrant up
 ```
 
 #### 3. Try ChatOps
-If you can see your bot online in Slack, you're ready to type some chat commands. Don't forget to invite your bot first into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
+If you can see your bot online in Slack, you're ready to type some chat commands. Don't forget to invite first your bot into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
 ```
 !help
 ```
