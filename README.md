@@ -40,7 +40,7 @@ Full list of available commands comes from [st2-chatops-aliases](https://github.
 * [`!show nginx stats on {{hosts}}`](http://i.imgur.com/Sc5wm7m.png) - Show sorted http status codes from nginx on hosts
 * [`!show version {{package}} on {{hosts}}`](http://i.imgur.com/RnUqEUb.png) - Show package versions on hosts
 * [`!status {{hosts}}`](http://i.imgur.com/fak6ZP7.png) - Show status for hosts (ansible ping module)
-* [`!update {{package}} on {{hosts}}`](http://i.imgur.com/ziIh0sZ.png) - Update package on remote hosts
+* [`!update {{package}} on {{hosts}}`](http://i.imgur.com/IT2EDcn.png) - Update package on remote hosts
 
 ![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](http://i.imgur.com/bspyYZ7.png)
 > Additionally check the results of performed commands in StackStorm control panel:  
