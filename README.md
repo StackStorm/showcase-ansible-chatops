@@ -29,14 +29,28 @@ If you can see your bot online in Slack, you're ready to type some chat commands
 ```
 !help
 ```
-![Ansible ChatOps with StackStorm, Hubot and Slack](http://i.imgur.com/y0Vb6jp.png)
+
+Full list of available commands comes from [st2-chatops-aliases](https://github.com/armab/st2-chatops-aliases) pack:
+* [`!ansible {{args}}`](http://i.imgur.com/pk3xouo.png) - Run ansible command on local machine
+* [`!cowsay {{message}}`](http://i.imgur.com/ziIh0sZ.png) - Draws a cow that says what you want
+* `!pack deploy {{packs}}` - Download StackStorm packs via ChatOps
+* `!pack deploy {{packs}} from {{repo_url}}` - Download StackStorm packs via ChatOps
+* [`!service restart {{service_name}} on {{hosts}}`](http://i.imgur.com/xVyl6xW.png) - Restart service on remote hosts
+* [`!show mysql processlist {{hosts=db}}`](http://i.imgur.com/6YNy3GJ.png) - Show MySQL processlist
+* [`!show nginx stats on {{hosts}}`](http://i.imgur.com/Sc5wm7m.png) - Show sorted http status codes from nginx on hosts
+* [`!show version {{package}} on {{hosts}}`](http://i.imgur.com/RnUqEUb.png) - Show package versions on hosts
+* [`!status {{hosts}}`](http://i.imgur.com/fak6ZP7.png) - Show status for hosts (ansible ping module)
+* [`!update {{package}} on {{hosts}}`](http://i.imgur.com/ziIh0sZ.png) - Update package on remote hosts
+
+![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](http://i.imgur.com/bspyYZ7.png)
 > Additionally check the results of performed commands in StackStorm control panel:  
 http://www.chatops:8080/
 username: `testu`
 password: `testp`
 
 #### 4. Don't stop!
-Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`hubot.sh`](hubot.sh) which are usual Vagrant shell provisioner scripts. Integrate your custom workflows and deployment mechanisms, you'll see how your work would become more efficient during time.
+Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`hubot.sh`](hubot.sh) which are usual Vagrant shell provisioner scripts.
+Integrate your custom workflows and deployment mechanisms, you'll see how your work would become more efficient during time.
 
 Feel the power of control center and may the force will be with you!
 
