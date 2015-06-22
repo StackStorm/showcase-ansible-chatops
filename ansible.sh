@@ -8,7 +8,7 @@ echo "########################### Prepare StackStorm and Ansible ###############
 st2 run packs.install packs=ansible
 
 # Install our custom pack with ansible ChatOps command aliases
-st2 run packs.install packs=st2-ansible-aliases repo_url=armab/st2-ansible-aliases
+st2 run packs.install packs=st2-chatops-aliases repo_url=armab/st2-chatops-aliases
 
 # Needed by ansible
 apt-get install -y sshpass

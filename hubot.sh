@@ -38,19 +38,26 @@ chmod -x /etc/init/hubot.conf
 grep -q "HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}" /etc/init/hubot.conf || sed -i "s/HUBOT_SLACK_TOKEN.*/HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}/" /etc/init/hubot.conf
 
 # Start hubot
-start hubot
+ps aux | grep -v grep | grep hubot > /dev/null && restart hubot || start hubot
 sleep 5
 
 # Verify if hubot is up and running
 if [[ `ps aux | grep -v grep | grep hubot` ]]; then
-    echo " "
+    echo "#############################################################################################"
     echo "All Done!"
+    echo " "
+    echo "Your bot should be online in your Slack. Your first ChatOps commands:"
+    echo "/invite <bot name>"
+    echo "!help"
+    echo " "
+    echo " "
     echo "Visit:"
     echo "http://chatops:8080/ - for StackStorm control panel"
-    echo " "
     exit 0
 else
+    echo "#############################################################################################"
     echo "ERROR!"
     echo "Something went wrong, hubot failed to start"
+    echo "Check /var/log/upstart/hubot.log for more info"
     exit 2
 fi
