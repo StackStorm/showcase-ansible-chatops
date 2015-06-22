@@ -33,8 +33,6 @@ If you can see your bot online in Slack, you're ready to type some chat commands
 Full list of available commands from [st2-chatops-aliases](https://github.com/armab/st2-chatops-aliases) pack:
 * [`!ansible {{args}}`](http://i.imgur.com/pk3xouo.png) - Run ansible command on local machine
 * [`!cowsay {{message}}`](http://i.imgur.com/ziIh0sZ.png) - Draws a cow that says what you want
-* `!pack deploy {{packs}}` - Download StackStorm packs via ChatOps
-* `!pack deploy {{packs}} from {{repo_url}}` - Download StackStorm packs via ChatOps
 * [`!service restart {{service_name}} on {{hosts}}`](http://i.imgur.com/xVyl6xW.png) - Restart service on remote hosts
 * [`!show mysql processlist {{hosts=db}}`](http://i.imgur.com/6YNy3GJ.png) - Show MySQL processlist
 * [`!show nginx stats on {{hosts}}`](http://i.imgur.com/Sc5wm7m.png) - Show sorted http status codes from nginx on hosts
