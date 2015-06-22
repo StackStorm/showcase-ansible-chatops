@@ -43,6 +43,7 @@ sleep 5
 
 # Verify if hubot is up and running
 if [[ `ps aux | grep -v grep | grep hubot` ]]; then
+    st2 run hubot.post_message channel=general message='Ready for ChatOps!``` Brought to you by: http://stackstorm.com/ For available commands type: ```!help' > /dev/null
     echo " "
     echo "#############################################################################################"
     echo "###################################### All Done! ############################################"
