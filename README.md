@@ -9,7 +9,7 @@ This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-dr
 It will get you up and running with `chatops` control VM with all St2 components prepared as well as Ansible and Hubot configured.
 Additionally, it installs 2 Ubuntu VMs: `web` server with nginx and `db` server with mysql.
 
-As a result you should get ready environment allowing you to execute [Ansible ad-hoc commands](http://docs.ansible.com/intro_adhoc.html) and run [Ansible playbooks](http://docs.ansible.com/playbooks.html) against VMs directly from your Slack chat.
+As a result you should get 100% ready environment allowing you to execute [Ansible ad-hoc commands](http://docs.ansible.com/intro_adhoc.html) and run [Ansible playbooks](http://docs.ansible.com/playbooks.html) against VMs directly from your Slack chat. In this showcase we already crafted some simple, but useful real world ChatOps commands.
 
 ### Getting started
 
