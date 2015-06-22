@@ -43,25 +43,26 @@ sleep 5
 
 # Verify if hubot is up and running
 if [[ `ps aux | grep -v grep | grep hubot` ]]; then
-    echo ""
+    echo " "
     echo "#############################################################################################"
     echo "###################################### All Done! ############################################"
-    echo ""
+    echo " "
     echo "Your bot should be online in your Slack. Your first ChatOps commands:"
     echo "/invite <bot name>"
     echo "!help"
-    echo ""
-    echo ""
+    echo " "
+    echo " "
     echo "Visit:"
     echo "http://chatops:8080/ - for StackStorm control panel"
-    echo ""
+    echo " "
     exit 0
 else
+    echo " "
     echo "#############################################################################################"
     echo "####################################### ERROR! ##############################################"
-    echo ""
+    echo " "
     echo "Something went wrong, hubot failed to start"
     echo "Check /var/log/upstart/hubot.log for more info"
-    echo ""
+    echo " "
     exit 2
 fi
