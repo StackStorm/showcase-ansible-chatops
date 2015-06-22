@@ -29,8 +29,8 @@ If you can see your bot online in Slack, you're ready to type some chat commands
 ```
 !help
 ```
-
-Full list of available commands comes from [st2-chatops-aliases](https://github.com/armab/st2-chatops-aliases) pack:
+![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](http://i.imgur.com/bspyYZ7.png)
+Full list of available commands from [st2-chatops-aliases](https://github.com/armab/st2-chatops-aliases) pack:
 * [`!ansible {{args}}`](http://i.imgur.com/pk3xouo.png) - Run ansible command on local machine
 * [`!cowsay {{message}}`](http://i.imgur.com/ziIh0sZ.png) - Draws a cow that says what you want
 * `!pack deploy {{packs}}` - Download StackStorm packs via ChatOps
@@ -42,7 +42,6 @@ Full list of available commands comes from [st2-chatops-aliases](https://github.
 * [`!status {{hosts}}`](http://i.imgur.com/fak6ZP7.png) - Show status for hosts (ansible ping module)
 * [`!update {{package}} on {{hosts}}`](http://i.imgur.com/IT2EDcn.png) - Update package on remote hosts
 
-![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](http://i.imgur.com/bspyYZ7.png)
 > Additionally check the results of performed commands in StackStorm control panel:  
 http://www.chatops:8080/
 username: `testu`
