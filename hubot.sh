@@ -52,7 +52,7 @@ for i in {1..30}; do
 done
 
 # Verify if hubot is up and running
-if [[ ${ACTIONEXIT} -eq 0 ]]; then
+if [ ${ACTIONEXIT} -eq 0 ]; then
     st2 run hubot.post_message channel=general message='Ready for ChatOps!``` Brought to you by: http://stackstorm.com/ For available commands type: ```!help' > /dev/null
     echo " "
     echo "#############################################################################################"
