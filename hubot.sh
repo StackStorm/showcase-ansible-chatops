@@ -38,11 +38,21 @@ chmod -x /etc/init/hubot.conf
 grep -q "HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}" /etc/init/hubot.conf || sed -i "s/HUBOT_SLACK_TOKEN.*/HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}/" /etc/init/hubot.conf
 
 # Start hubot
+rm -rf /var/log/upstart/hubot.log
 ps aux | grep -v grep | grep hubot > /dev/null && restart hubot || start hubot
-sleep 5
+
+# Wait 30 seconds for Hubot to start
+for i in {1..30}; do
+    #ACTIONEXIT=`nc -z 127.0.0.1 8181; echo $?`
+    ACTIONEXIT=`grep -q 'Slack client now connected' /var/log/upstart/hubot.log 2> /dev/null; echo $?`
+    if [ ${ACTIONEXIT} -eq 0 ]; then
+        break
+    fi
+    sleep 1
+done
 
 # Verify if hubot is up and running
-if [[ `ps aux | grep -v grep | grep hubot` ]]; then
+if [[ ${ACTIONEXIT} -eq 0 ]]; then
     st2 run hubot.post_message channel=general message='Ready for ChatOps!``` Brought to you by: http://stackstorm.com/ For available commands type: ```!help' > /dev/null
     echo " "
     echo "#############################################################################################"
