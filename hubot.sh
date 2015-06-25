@@ -58,7 +58,7 @@ if [ ${ACTIONEXIT} -eq 0 ]; then
     echo "#############################################################################################"
     echo "###################################### All Done! ############################################"
     echo " "
-    echo "Your bot should be online in your Slack. Your first ChatOps command:"
+    echo "Your bot should be online in Slack now. Your first ChatOps command:"
     echo "!help"
     echo " "
     echo " "
