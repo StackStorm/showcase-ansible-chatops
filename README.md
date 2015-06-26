@@ -23,9 +23,10 @@ To provision the environment run:
 ```sh
 vagrant up
 ```
+Installation takes some time.
 
 #### 3. Try ChatOps
-If you can see your bot online in Slack, you're ready to type some chat commands. Don't forget to invite first your bot into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
+You should see your bot online in Slack and now you're ready to type some chat commands. Don't forget to invite first your bot into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
 ```
 !help
 ```
