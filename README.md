@@ -1,5 +1,6 @@
 Ansible & ChatOps with Slack, Hubot and StackStorm - Vagrant demo
 ===========
+> Part of tutorial: [Ansible and ChatOps. Get started :rocket:](http://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
 
 ### Introduction
 This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-driven automation platform running with [Ansible](http://ansible.com/) configuration management tool and [Hubot](https://hubot.github.com/) ChatOps engine. The objective is to operate servers with Ansible directly from [Slack](http://slack.com/) chat.
