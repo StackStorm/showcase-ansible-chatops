@@ -48,12 +48,12 @@ password: `testp`
 
 #### 4. Don't stop!
 Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`hubot.sh`](hubot.sh) which are usual Vagrant shell provisioner scripts.
-Integrate your custom workflows and deployment mechanisms, you'll see how your work would become more efficient during time.
+Integrate your custom workflows and deployment mechanisms, you'll see how your work becomes more efficient during time.
 
 Feel the power of control center and may the force will be with you!
 
 ----
 We're always ready to help, feel free to:
-* ask questions on [IRC: #stackStorm on freenode.net](http://webchat.freenode.net/?channels=stackstorm)
-* report bug, provide feature request on [GitHub st2](https://github.com/StackStorm/st2)
+* ask questions on [IRC: #stackStorm on freenode.net](http://webchat.freenode.net/?channels=stackstorm) or our [public Slack](https://stackstorm.typeform.com/to/K76GRP)
+* report bug, provide feature request or just give us a ✮ star at [GitHub st2](https://github.com/StackStorm/st2)
 * share your st2 story, [email us](mailto:support@stackstorm.com)
