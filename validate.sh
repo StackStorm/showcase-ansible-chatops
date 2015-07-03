@@ -7,7 +7,7 @@ TEST_ACCOUNT_PASSWORD="testp"
 
 echo "========= Verifying St2 ========="
 st2ctl restart
-sleep 5
+sleep 10
 echo "========== Test Action =========="
 st2 run core.local date
 ACTIONEXIT=$?
