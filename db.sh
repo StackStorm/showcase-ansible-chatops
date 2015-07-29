@@ -4,6 +4,7 @@ set -e
 echo "#############################################################################################"
 echo "##################################### Prepare db VM #########################################"
 
+apt-get update
 # Install MySQL, set root password to 'PASS'
 export DEBIAN_FRONTEND=noninteractive
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password PASS'
