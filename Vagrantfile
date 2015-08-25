@@ -3,7 +3,7 @@
 
 # Set Hubot Slack Token here
 HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
-ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'latest'
+ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'stable'
 
 VIRTUAL_MACHINES = {
   :web => {
