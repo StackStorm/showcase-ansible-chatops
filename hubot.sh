@@ -28,7 +28,7 @@ sudo -H -u stanley bash -c 'cd /opt/hubot && echo "n" | yo hubot --name=stanley 
 sudo -H -u stanley bash -c 'cd /opt/hubot && npm install hubot-slack hubot-stackstorm --save'
 
 # Add "hubot-stackstorm" entry into /opt/hubot/external-scripts.json file (only if it doesn't exist)
-grep -q 'hubot-stackstorm' /opt/hubot/external-scripts.json || sed -i 's/.*\[.*/&\n  "hubot-stackstorm",/' /opt/hubot/external-scripts.json
+grep -q 'hubot-stackstorm' /opt/hubot/external-scripts.json || sudo -H -u stanley sed -i 's/.*\[.*/&\n  "hubot-stackstorm",/' /opt/hubot/external-scripts.json
 
 # Create upstart script
 cp /vagrant/hubot/hubot.conf /etc/init/hubot.conf
