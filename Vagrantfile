@@ -52,6 +52,10 @@ Vagrant.configure(2) do |config|
         vb.name = cfg[:hostname]
       end
 
+      if Vagrant.has_plugin?('vagrant-cachier')
+        vm_config.cache.scope = :box
+      end
+
       vm_config.vm.provision :hostmanager
 
       if name == :web
