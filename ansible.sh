@@ -17,7 +17,7 @@ apt-get install -y sshpass
 apt-get install -y cowsay
 
 # Copy ansible config files from vagrant shared directory to '/etc/ansible'
-st2 run ansible.command_local module-name=synchronize args='src=/vagrant/ansible/ dest=/etc/ansible'
+st2 run ansible.command_local module_name=synchronize args='src=/vagrant/ansible/ dest=/etc/ansible'
 chown -R root:root /etc/ansible
 chmod -R 755 /etc/ansible
 chmod 640 $(find /etc/ansible -type f)
