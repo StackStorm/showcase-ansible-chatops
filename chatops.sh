@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+export ST2_AUTH_TOKEN=`st2 auth -t testu -p testp `
+
 echo "#############################################################################################"
 echo "############################ Configure Hubot and StackStorm #################################"
 
@@ -12,9 +14,6 @@ sed -i "s~export HUBOT_NAME=hubot~export HUBOT_NAME=${HUBOT_NAME}~" /opt/stackst
 
 # Token must be set. Vagrant will terminate if token unset
 sed -i "s/.*export HUBOT_SLACK_TOKEN.*/export HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}/" /opt/stackstorm/chatops/st2chatops.env
-
-echo "configured chatops, haven't tested or restarted yet, exiting now"
-exit
 
 # Start Chatops
 st2ctl restart st2chatops

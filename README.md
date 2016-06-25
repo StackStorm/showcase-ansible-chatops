@@ -19,7 +19,7 @@ As a result you should get 100% ready environment allowing you to execute [Ansib
 * Navigate `Configure Integrations -> Filter -> Hubot` and generate Slack & Hubot API Token.
 
 #### 2. Vagrant up
-Edit [`Vagrantfile`](Vagrantfile#L5) and place just generated API token under `HUBOT_SLACK_TOKEN` constant, or just export it:
+Edit [`Vagrantfile`](Vagrantfile#L5) and add the just generated API token under `HUBOT_SLACK_TOKEN` constant, or just export it:
 ```sh
 export HUBOT_SLACK_TOKEN=xoxb-1234-5678-91011-00e4dd
 ```

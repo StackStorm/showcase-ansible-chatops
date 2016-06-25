@@ -30,7 +30,8 @@ end
 
 unless HUBOT_SLACK_TOKEN.start_with?('xoxb-')
   puts "Error! HUBOT_SLACK_TOKEN is required."
-  puts "Please specify it in Vagrantfile."
+  puts "Please specify it in your environment, e.g.:"
+  puts "export HUBOT_SLACK_TOKEN=xoxb-5187818172-I7wLh4oqzhAScwXZtPcHyxCu"
   exit
 end
 
