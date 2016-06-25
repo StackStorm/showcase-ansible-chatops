@@ -1,15 +1,16 @@
 # Disable Authentication in /etc/st2/st2/conf (set `enable = False` under `auth` config section)
-sed -i '/^\[auth\]$/,/^\[/ s/^enable = True/enable = False/' /etc/st2/st2.conf
+#sed -i '/^\[auth\]$/,/^\[/ s/^enable = True/enable = False/' /etc/st2/st2.conf
 
 # Information about a test account which used by st2_deploy
 TEST_ACCOUNT_USERNAME="testu"
 TEST_ACCOUNT_PASSWORD="testp"
 
 echo "========= Verifying St2 ========="
-st2ctl restart
-sleep 10
+st2ctl status
+#sleep 10
 echo "========== Test Action =========="
-st2 run core.local date
+export ST2_AUTH_TOKEN=`st2 auth -t ${TEST_ACCOUNT_USERNAME} -p ${TEST_ACCOUNT_PASSWORD}`
+st2 run core.local -- date -R
 ACTIONEXIT=$?
 
 echo "=============================="
@@ -30,9 +31,7 @@ else
   echo ""
   echo "  st2 is installed and ready  "
 fi
-if [ ${INSTALL_WEBUI} == "1" ]; then
-  echo "StackStorm WebUI at http://`hostname`:8080/"
-fi
+echo "StackStorm WebUI at http://`hostname`:8080/"
 
 echo "=========================================="
 echo ""

@@ -4,6 +4,7 @@
 # Set Hubot Slack Token here
 HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
 ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'stable'
+HUBOT_NAME = ENV['HUBOT_NAME'] ? ENV['HUBOT_NAME'] : 'hubot'
 
 VIRTUAL_MACHINES = {
   :web => {
@@ -72,12 +73,10 @@ Vagrant.configure(2) do |config|
           vb.memory = 2048
         end
         # Start shell provisioning for chatops server
-        vm_config.vm.provision :shell, :inline => "curl -sS -k -O https://downloads.stackstorm.net/releases/st2/scripts/st2_deploy.sh"
-        vm_config.vm.provision :shell, :inline => "INSTALL_WEBUI=1 bash -c '. st2_deploy.sh #{ST2VER}'"
-        vm_config.vm.provision :shell, :path => "rsyslog.sh"
-        vm_config.vm.provision :shell, :inline => "INSTALL_WEBUI=1 bash -c '/vagrant/validate.sh'"
+        vm_config.vm.provision :shell, :inline => "curl -sSL https://stackstorm.com/packages/install.sh | bash -s -- --user=testu --password=testp"
+        vm_config.vm.provision :shell, :inline => "bash '/vagrant/validate.sh'"
         vm_config.vm.provision :shell, :path => "ansible.sh"
-        vm_config.vm.provision :shell, :inline => "HUBOT_SLACK_TOKEN=#{HUBOT_SLACK_TOKEN} bash -c '/vagrant/hubot.sh'"
+        vm_config.vm.provision :shell, :inline => "HUBOT_SLACK_TOKEN=#{HUBOT_SLACK_TOKEN} HUBOT_NAME=#{HUBOT_NAME} bash -c '/vagrant/chatops.sh'"
       end
     end
   end

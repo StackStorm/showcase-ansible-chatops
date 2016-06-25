@@ -47,7 +47,7 @@ Full list of available commands from [st2-chatops-aliases](https://github.com/ar
 * [`!cowsay {{message}}`](http://i.imgur.com/ziIh0sZ.png) - Draws a cow that says what you want
 
 > Additionally check the results of performed commands in StackStorm control panel:  
-http://www.chatops:8080/
+https://www.chatops/
 username: `testu`
 password: `testp`
 
