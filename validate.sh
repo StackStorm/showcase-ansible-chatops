@@ -31,7 +31,7 @@ else
   echo ""
   echo "  st2 is installed and ready  "
 fi
-echo "StackStorm WebUI at http://`hostname`:8080/"
+echo "StackStorm WebUI at https://`hostname`/"
 
 echo "=========================================="
 echo ""

@@ -52,7 +52,7 @@ username: `testu`
 password: `testp`
 
 #### 4. Don't stop!
-Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`hubot.sh`](hubot.sh) which are usual Vagrant shell provisioner scripts.
+Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`chatops.sh`](chatops.sh) which are usual Vagrant shell provisioner scripts.
 Integrate your custom workflows and deployment mechanisms, you'll see how your work becomes more efficient during time.
 
 Feel the power of control center and may the force will be with you!
