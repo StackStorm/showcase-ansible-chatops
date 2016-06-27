@@ -2,7 +2,7 @@
 set -e
 
 # Moved this check here out of Vagrantfile so it's only executed on provisioning
-if [[ "$HUBOT" != "xoxb"* ]]
+if [[ "$HUBOT_SLACK_TOKEN" != "xoxb"* ]]
  then 
     echo "Error! HUBOT_SLACK_TOKEN is required."
     echo "Please specify it in your environment, e.g.:"
