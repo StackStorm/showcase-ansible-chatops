@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+# Moved this check here out of Vagrantfile so it's only executed on provisioning
+if [[ "$HUBOT" != "xoxb"* ]]
+ then 
+    echo "Error! HUBOT_SLACK_TOKEN is required."
+    echo "Please specify it in your environment, e.g.:"
+    echo "export HUBOT_SLACK_TOKEN=xoxb-5187818172-I7wLh4oqzhAScwXZtPcHyxCu"
+    exit 1
+fi
+
 export ST2_AUTH_TOKEN=`st2 auth -t testu -p testp `
 
 echo "#############################################################################################"
