@@ -4,6 +4,9 @@ set -e
 echo "#############################################################################################"
 echo "########################### Prepare StackStorm and Ansible ##################################"
 
+#  Acquire and export st2 auth token to run commands without authentication
+export ST2_AUTH_TOKEN=`st2 auth -t testu -p testp `
+
 # Install ansible integration pack
 st2 run packs.install packs=ansible
 

@@ -19,7 +19,7 @@ As a result you should get 100% ready environment allowing you to execute [Ansib
 * Navigate `Configure Integrations -> Filter -> Hubot` and generate Slack & Hubot API Token.
 
 #### 2. Vagrant up
-Edit [`Vagrantfile`](Vagrantfile#L5) and place just generated API token under `HUBOT_SLACK_TOKEN` constant, or just export it:
+Edit [`Vagrantfile`](Vagrantfile#L5) and add the just generated API token under `HUBOT_SLACK_TOKEN` constant, or just export it:
 ```sh
 export HUBOT_SLACK_TOKEN=xoxb-1234-5678-91011-00e4dd
 ```
@@ -47,12 +47,12 @@ Full list of available commands from [st2-chatops-aliases](https://github.com/ar
 * [`!cowsay {{message}}`](http://i.imgur.com/ziIh0sZ.png) - Draws a cow that says what you want
 
 > Additionally check the results of performed commands in StackStorm control panel:  
-http://www.chatops:8080/
+https://www.chatops/
 username: `testu`
 password: `testp`
 
 #### 4. Don't stop!
-Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`hubot.sh`](hubot.sh) which are usual Vagrant shell provisioner scripts.
+Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`chatops.sh`](chatops.sh) which are usual Vagrant shell provisioner scripts.
 Integrate your custom workflows and deployment mechanisms, you'll see how your work becomes more efficient during time.
 
 Feel the power of control center and may the force will be with you!
