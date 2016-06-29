@@ -35,16 +35,16 @@ You should see your bot online in Slack and now you're ready to type some chat c
 ```
 !help
 ```
-![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](http://i.imgur.com/bspyYZ7.png)
+![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](https://i.imgur.com/LGLey2m.png)
 Full list of available commands from [st2-chatops-aliases](https://github.com/armab/st2-chatops-aliases) pack:
-* [`!ansible {{args}}`](http://i.imgur.com/pk3xouo.png) - Run ansible command on local machine
-* [`!status {{hosts}}`](http://i.imgur.com/fak6ZP7.png) - Show status for hosts (ansible ping module)
-* [`!show nginx stats on {{hosts}}`](http://i.imgur.com/Sc5wm7m.png) - Show sorted http status codes from nginx on hosts
-* [`!show mysql processlist {{hosts=db}}`](http://i.imgur.com/6YNy3GJ.png) - Show MySQL processlist
-* [`!service restart {{service_name}} on {{hosts}}`](http://i.imgur.com/xVyl6xW.png) - Restart service on remote hosts
-* [`!show version {{package}} on {{hosts}}`](http://i.imgur.com/RnUqEUb.png) - Show package versions on hosts
-* [`!update {{package}} on {{hosts}}`](http://i.imgur.com/IT2EDcn.png) - Update package on remote hosts
-* [`!cowsay {{message}}`](http://i.imgur.com/ziIh0sZ.png) - Draws a cow that says what you want
+* [`!ansible <command>`](https://i.imgur.com/9xEgfP6.png) - Run ansible command on local machine
+* [`!status <hosts>`](https://i.imgur.com/ZOZgGnz.png) - Show status for hosts (ansible ping module)
+* [`!show nginx stats on <hosts>`](https://i.imgur.com/Wsvdx3W.png) - Show sorted http status codes from nginx on hosts
+* [`!show mysql processlist <hosts=db>`](https://i.imgur.com/RxePho1.png) - Show MySQL processlist
+* [`!service restart <service_name> on <hosts>`](https://i.imgur.com/rNsHdtK.png) - Restart service on remote hosts
+* [`!show version <package> on <hosts>`](https://i.imgur.com/M8hTv9W.png) - Show package versions on hosts
+* [`!update <package> on <hosts>`](https://i.imgur.com/wotBnvA.png) - Update package on remote hosts
+* [`!cowsay <message>`](https://i.imgur.com/mCYHFM6.png) - Draws a cow that says what you want
 
 > Additionally check the results of performed commands in StackStorm control panel:  
 https://www.chatops/
@@ -59,6 +59,6 @@ Feel the power of control center and may the force will be with you!
 
 ----
 We're always ready to help, feel free to:
-* ask questions on [IRC: #stackStorm on freenode.net](http://webchat.freenode.net/?channels=stackstorm) or our [public Slack](https://stackstorm.typeform.com/to/K76GRP)
+* ask questions on our [public Slack](https://stackstorm.typeform.com/to/K76GRP)
 * report bug, provide feature request or just give us a ✮ star at [GitHub st2](https://github.com/StackStorm/st2)
-* share your st2 story, [email us](mailto:support@stackstorm.com)
+* share your StackStorm story, [email us](mailto:support@stackstorm.com)
