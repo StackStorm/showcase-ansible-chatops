@@ -3,7 +3,6 @@
 
 # Set Hubot Slack Token here
 HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
-ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'stable'
 HUBOT_NAME = ENV['HUBOT_NAME'] ? ENV['HUBOT_NAME'] : 'hubot'
 
 VIRTUAL_MACHINES = {
