@@ -73,7 +73,6 @@ Vagrant.configure(2) do |config|
           '--user=demo',
           '--password=demo'
         ]
-        vm_config.vm.provision :shell, path: "validate.sh"
         vm_config.vm.provision :shell, path: "ansible.sh"
         vm_config.vm.provision :shell, path: "chatops.sh", env: {
           'HUBOT_SLACK_TOKEN' => "#{HUBOT_SLACK_TOKEN}",
