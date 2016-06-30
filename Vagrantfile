@@ -67,10 +67,16 @@ Vagrant.configure(2) do |config|
           vb.memory = 2048
         end
         # Start shell provisioning for chatops server
-        vm_config.vm.provision :shell, :inline => "curl -sSL https://stackstorm.com/packages/install.sh | bash -s -- --user=testu --password=testp"
-        vm_config.vm.provision :shell, :inline => "bash '/vagrant/validate.sh'"
-        vm_config.vm.provision :shell, :path => "ansible.sh"
-        vm_config.vm.provision :shell, :inline => "HUBOT_SLACK_TOKEN=#{HUBOT_SLACK_TOKEN} HUBOT_NAME=#{HUBOT_NAME} bash -c '/vagrant/chatops.sh'"
+        vm_config.vm.provision :shell, privileged: false, path: "https://stackstorm.com/packages/install.sh", args: [
+          '--user=testu',
+          '--password=testp'
+        ]
+        vm_config.vm.provision :shell, path: "validate.sh"
+        vm_config.vm.provision :shell, path: "ansible.sh"
+        vm_config.vm.provision :shell, path: "chatops.sh", env: {
+          'HUBOT_SLACK_TOKEN' => "#{HUBOT_SLACK_TOKEN}",
+          'HUBOT_NAME' => "#{HUBOT_NAME}"
+        }
       end
     end
   end
