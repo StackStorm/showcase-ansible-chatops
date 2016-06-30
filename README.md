@@ -49,8 +49,8 @@ Full list of available commands from [st2-chatops-aliases](https://github.com/ar
 
 > Additionally check the results of performed commands in StackStorm control panel:  
 https://www.chatops/
-username: `testu`
-password: `testp`
+username: `demo`
+password: `demo`
 
 #### 4. Don't stop!
 Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`chatops.sh`](chatops.sh) which are usual Vagrant shell provisioner scripts.
