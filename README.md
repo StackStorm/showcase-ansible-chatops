@@ -1,11 +1,12 @@
 Ansible & ChatOps with Slack, Hubot and StackStorm - Vagrant demo
 ===========
-> Part of tutorial: [Ansible and ChatOps. Get started :rocket:](http://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
+[![Join our community Slack](https://stackstorm-community.herokuapp.com/badge.svg)](https://stackstorm.typeform.com/to/K76GRP) [![IRC](https://img.shields.io/irc/%23stackstorm.png)](http://webchat.freenode.net/?channels=stackstorm)
+> ##### Part of tutorial: [Ansible and ChatOps. Get started :rocket:](https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
 
 ### Introduction
 This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-driven automation platform running with [Ansible](http://ansible.com/) configuration management tool and [Hubot](https://hubot.github.com/) ChatOps engine. The objective is to operate servers with Ansible directly from [Slack](http://slack.com/) chat.
 
-![Ansible and ChatOps with Slack and Hubot](http://i.imgur.com/HWN8T78.png)
+[![Ansible and ChatOps with Slack and Hubot](http://i.imgur.com/HWN8T78.png)](https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
 
 It will get you up and running with `chatops` control VM with all St2 components prepared as well as Ansible and Hubot configured.
 Additionally, it installs 2 Ubuntu VMs: `web` server with nginx and `db` server with mysql.
