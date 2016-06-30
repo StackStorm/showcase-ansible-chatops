@@ -2,13 +2,13 @@
 set -e
 
 # Moved this check here out of Vagrantfile so it's only executed on provisioning
-if [[ "$HUBOT_SLACK_TOKEN" != "xoxb"* ]]
- then 
-    echo "Error! HUBOT_SLACK_TOKEN is required."
-    echo "Please specify it in your environment, e.g.:"
-    echo "export HUBOT_SLACK_TOKEN=xoxb-5187818172-I7wLh4oqzhAScwXZtPcHyxCu"
-    exit 1
-fi
+#if [[ "$HUBOT_SLACK_TOKEN" != "xoxb"* ]]
+# then
+#    echo "Error! HUBOT_SLACK_TOKEN is required."
+#    echo "Please specify it in your environment, e.g.:"
+#    echo "export HUBOT_SLACK_TOKEN=xoxb-5187818172-I7wLh4oqzhAScwXZtPcHyxCu"
+#    exit 1
+#fi
 
 echo "#############################################################################################"
 echo "############################ Configure Hubot and StackStorm #################################"
@@ -19,15 +19,11 @@ sed -i "s~# export HUBOT_ADAPTER=slack~export HUBOT_ADAPTER=slack~" /opt/stackst
 # Will use name 'stanley' by default, unless changed in env
 sed -i "s~export HUBOT_NAME=hubot~export HUBOT_NAME=${HUBOT_NAME}~" /opt/stackstorm/chatops/st2chatops.env
 
-# Token must be set. Vagrant will terminate if token unset
-sed -i "s/.*export HUBOT_SLACK_TOKEN.*/export HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}/" /opt/stackstorm/chatops/st2chatops.env
-
 # Start Chatops
 st2ctl restart st2chatops
 
 # Wait 30 seconds for Hubot to start
 for i in {1..30}; do
-    #ACTIONEXIT=`nc -z 127.0.0.1 8181; echo $?`
     ACTIONEXIT=`grep -q 'Slack client now connected' /var/log/st2/st2chatops.log 2> /dev/null; echo $?`
     if [ ${ACTIONEXIT} -eq 0 ]; then
         break

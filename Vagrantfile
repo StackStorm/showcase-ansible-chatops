@@ -26,7 +26,6 @@ unless Vagrant.has_plugin?('vagrant-hostmanager')
   system('vagrant plugin install vagrant-hostmanager') || exit!
   exit system('vagrant', *ARGV)
 end
-
 Vagrant.configure(2) do |config|
   # Global configuration for all boxes
   config.hostmanager.enabled = false
@@ -66,18 +65,20 @@ Vagrant.configure(2) do |config|
           vb.memory = 2048
         end
         # Start shell provisioning for chatops server
-
-        # Use `privileged: false`, the script is initially executed from the `vagrant` user, `sudo`-ing when needed
-        # Allows to set StackStorm credentials for both `vagrant` and `root` users in `~/.st2`
-        vm_config.vm.provision :shell, privileged: false, path: "https://stackstorm.com/packages/install.sh", args: [
-          '--user=demo',
-          '--password=demo'
-        ]
+        vm_config.vm.provision :shell,
+          # Use `privileged: false`, the script is initially executed from the `vagrant` user, `sudo`-ing when needed
+          # Allows to set StackStorm credentials for both `vagrant` and `root` users in `~/.st2`
+          privileged: false,
+          path: "https://stackstorm.com/packages/install.sh",
+          args: [
+            '--user=demo',
+            '--password=demo'
+          ],
+          env: {
+            'HUBOT_SLACK_TOKEN' => "#{HUBOT_SLACK_TOKEN}"
+          }
         vm_config.vm.provision :shell, path: "ansible.sh"
-        vm_config.vm.provision :shell, path: "chatops.sh", env: {
-          'HUBOT_SLACK_TOKEN' => "#{HUBOT_SLACK_TOKEN}",
-          'HUBOT_NAME' => "#{HUBOT_NAME}"
-        }
+        vm_config.vm.provision :shell, path: "chatops.sh", env: {'HUBOT_NAME' => "#{HUBOT_NAME}"}
       end
     end
   end
