@@ -10,8 +10,6 @@ if [[ "$HUBOT_SLACK_TOKEN" != "xoxb"* ]]
     exit 1
 fi
 
-export ST2_AUTH_TOKEN=`st2 auth -t testu -p testp `
-
 echo "#############################################################################################"
 echo "############################ Configure Hubot and StackStorm #################################"
 

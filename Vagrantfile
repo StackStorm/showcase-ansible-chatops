@@ -66,6 +66,9 @@ Vagrant.configure(2) do |config|
           vb.memory = 2048
         end
         # Start shell provisioning for chatops server
+
+        # Use `privileged: false`, the script is initially executed from the `vagrant` user, `sudo`-ing when needed
+        # Allows to set StackStorm credentials for both `vagrant` and `root` users in `~/.st2`
         vm_config.vm.provision :shell, privileged: false, path: "https://stackstorm.com/packages/install.sh", args: [
           '--user=testu',
           '--password=testp'
