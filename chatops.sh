@@ -16,7 +16,7 @@ echo "############################ Configure Hubot and StackStorm ##############
 # Configure Hubot to use Slack
 sed -i "s~# export HUBOT_ADAPTER=slack~export HUBOT_ADAPTER=slack~" /opt/stackstorm/chatops/st2chatops.env
 
-# Will use name 'hubot' by default, unless changed in env
+# Will use name 'stanley' by default, unless changed in env
 sed -i "s~export HUBOT_NAME=hubot~export HUBOT_NAME=${HUBOT_NAME}~" /opt/stackstorm/chatops/st2chatops.env
 
 # Token must be set. Vagrant will terminate if token unset

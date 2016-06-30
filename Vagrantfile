@@ -3,7 +3,7 @@
 
 # Set Hubot Slack Token here
 HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
-HUBOT_NAME = ENV['HUBOT_NAME'] ? ENV['HUBOT_NAME'] : 'hubot'
+HUBOT_NAME = ENV['HUBOT_NAME'] ? ENV['HUBOT_NAME'] : 'stanley'
 
 VIRTUAL_MACHINES = {
   :web => {
