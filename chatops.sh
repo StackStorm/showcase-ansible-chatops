@@ -11,16 +11,16 @@ set -e
 #fi
 
 echo "#############################################################################################"
-echo "############################ Configure Hubot and StackStorm #################################"
+echo "########################### Configure StackStorm and ChatOps ################################"
 
-# Configure Hubot to use Slack
-sed -i "s~# export HUBOT_ADAPTER=slack~export HUBOT_ADAPTER=slack~" /opt/stackstorm/chatops/st2chatops.env
+# Configure Hubot to use Slack (make sure we change the first occurence)
+sed -i "0,/.*export HUBOT_ADAPTER.*/s/.*export HUBOT_ADAPTER.*/export HUBOT_ADAPTER=slack/" /opt/stackstorm/chatops/st2chatops.env
 
 # Will use name 'stanley' by default, unless changed in env
-sed -i "s~export HUBOT_NAME=hubot~export HUBOT_NAME=${HUBOT_NAME}~" /opt/stackstorm/chatops/st2chatops.env
+sed -i "s/.*export HUBOT_NAME.*/export HUBOT_NAME=${HUBOT_NAME}/" /opt/stackstorm/chatops/st2chatops.env
 
 # Public URL of StackStorm instance: used it to offer links to execution details in a chat
-sed -i -r "s/^(export ST2_WEBUI_URL.).*/\1https:\/\/`hostname`/" /opt/stackstorm/chatops/st2chatops.env
+sed -i "s/.*export ST2_WEBUI_URL.*/export ST2_WEBUI_URL=https:\/\/`hostname`/" /opt/stackstorm/chatops/st2chatops.env
 
 # Start Chatops
 service st2chatops restart
