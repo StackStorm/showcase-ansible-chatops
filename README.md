@@ -1,7 +1,6 @@
 Ansible & ChatOps with Slack, Hubot and StackStorm - Vagrant demo
 ===========
-[![Join our community Slack](https://stackstorm-community.herokuapp.com/badge.svg)](https://stackstorm.typeform.com/to/K76GRP) [![IRC](https://img.shields.io/irc/%23stackstorm.png)](http://webchat.freenode.net/?channels=stackstorm)
-> ##### Part of tutorial: [Ansible and ChatOps. Get started :rocket:](https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
+> Part of tutorial: [Ansible and ChatOps. Get started :rocket:](https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
 
 ### Introduction
 This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-driven automation platform running with [Ansible](http://ansible.com/) configuration management tool and [Hubot](https://hubot.github.com/) ChatOps engine. The objective is to operate servers with Ansible directly from [Slack](http://slack.com/) chat.
@@ -58,8 +57,10 @@ Integrate your custom workflows and deployment mechanisms, you'll see how your w
 
 Feel the power of control center and may the force will be with you!
 
-----
+#### Need Help? Want to talk?
+[![Join our community Slack](https://stackstorm-community.herokuapp.com/badge.svg)](https://stackstorm.typeform.com/to/K76GRP) [![IRC](https://img.shields.io/irc/%23stackstorm.png)](http://webchat.freenode.net/?channels=stackstorm)
+
 We're always ready to help, feel free to:
-* ask questions on our [public Slack](https://stackstorm.typeform.com/to/K76GRP)
-* report bug, provide feature request or just give us a ✮ star at [GitHub st2](https://github.com/StackStorm/st2)
-* share your StackStorm story, [email us](mailto:support@stackstorm.com)
+* Ask questions on our public Slack or IRC
+* Report bug, provide feature request or just give us a ✮ star at [GitHub st2](https://github.com/StackStorm/st2)
+* Tell us how you use st2, share your StackStorm story. We love stories!
