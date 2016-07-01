@@ -33,7 +33,8 @@ done
 
 # Verify if Chatops is up and running
 if [ ${ACTIONEXIT} -eq 0 ]; then
-    st2 run chatops.post_message channel=general message='Ready for ChatOps!``` Brought to you by: http://stackstorm.com/ For available commands type: ```!help' > /dev/null
+    st2 run chatops.post_message channel=general message='To get a list of commands type: ```!help```' extra='{"slack": {"color":"#f48527","pretext":"Hey <!channel>, Ready for ChatOps?","title": "Ansible and ChatOps. Get started :rocket:","title_link":"https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/","author_name":"by StackStorm - IFTTT for Ops","author_link":"https://stackstorm.com/","author_icon":"https://stackstorm.com/wp/wp-content/uploads/2015/01/favicon.png","image_url":"https://i.imgur.com/HWN8T78.png","fields":[{"title":"Documentation","value":"https://docs.stackstorm.com/chatops/","short":true}]}}' > /dev/null
+    st2 run chatops.post_message channel=general message='*Warning!* You might have fun: https://www.youtube.com/watch?v=IhzxnY7FIvg {~}' > /dev/null
     echo " "
     echo "#############################################################################################"
     echo "###################################### All Done! ############################################"
@@ -44,6 +45,8 @@ if [ ${ACTIONEXIT} -eq 0 ]; then
     echo " "
     echo "Visit:"
     echo "https://chatops/ - for StackStorm control panel"
+    echo "Username: demo"
+    echo "Password: demo"
     echo " "
     exit 0
 else

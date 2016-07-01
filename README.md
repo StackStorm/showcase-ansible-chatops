@@ -32,7 +32,7 @@ vagrant up
 Installation takes some time (st2 engine comes with Python, RabbitMQ, PostgreSQL, MongoDB, OpenStack Mistral).
 
 #### 3. Try ChatOps
-You should see your bot online in Slack and now you're ready to type some chat commands. Don't forget to invite your bot into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
+You should see your bot online in Slack and now you're ready to type some chat commands. Don't forget to invite your bot into the Slack channel: `/invite @stanley`. Your first ChatOps command is: 
 ```
 !help
 ```
