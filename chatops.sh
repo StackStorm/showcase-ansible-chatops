@@ -19,6 +19,9 @@ sed -i "s~# export HUBOT_ADAPTER=slack~export HUBOT_ADAPTER=slack~" /opt/stackst
 # Will use name 'stanley' by default, unless changed in env
 sed -i "s~export HUBOT_NAME=hubot~export HUBOT_NAME=${HUBOT_NAME}~" /opt/stackstorm/chatops/st2chatops.env
 
+# Public URL of StackStorm instance: used it to offer links to execution details in a chat
+sed -i -r "s/^(export ST2_WEBUI_URL.).*/\1https:\/\/`hostname`/" /opt/stackstorm/chatops/st2chatops.env
+
 # Start Chatops
 st2ctl restart st2chatops
 
