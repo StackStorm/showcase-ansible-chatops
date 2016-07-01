@@ -23,11 +23,12 @@ sed -i "s~export HUBOT_NAME=hubot~export HUBOT_NAME=${HUBOT_NAME}~" /opt/stackst
 sed -i -r "s/^(export ST2_WEBUI_URL.).*/\1https:\/\/`hostname`/" /opt/stackstorm/chatops/st2chatops.env
 
 # Start Chatops
-st2ctl restart st2chatops
+service st2chatops restart
 
 # Wait 30 seconds for Hubot to start
+> /var/log/st2/st2chatops.log
 for i in {1..30}; do
-    ACTIONEXIT=`grep -q 'Slack client now connected' /var/log/st2/st2chatops.log 2> /dev/null; echo $?`
+    ACTIONEXIT=`grep -q 'Slack client now connected' /var/log/st2/st2chatops.log && grep -q 'INFO [[:digit:]]\+ commands are loaded' /var/log/st2/st2chatops.log 2> /dev/null; echo $?`
     if [ ${ACTIONEXIT} -eq 0 ]; then
         break
     fi
