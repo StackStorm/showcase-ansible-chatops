@@ -20,6 +20,11 @@ sed -i "0,/.*export HUBOT_ADAPTER.*/s/.*export HUBOT_ADAPTER.*/export HUBOT_ADAP
 sed -i "s/.*export HUBOT_NAME.*/export HUBOT_NAME=${HUBOT_NAME}/" /opt/stackstorm/chatops/st2chatops.env
 # Public URL of StackStorm instance: used it to offer links to execution details in a chat
 sed -i "s/.*export ST2_WEBUI_URL.*/export ST2_WEBUI_URL=https:\/\/`hostname`/" /opt/stackstorm/chatops/st2chatops.env
+
+# Install hubot-shipit
+cd /opt/stackstorm/chatops && npm install hubot-shipit --save
+grep -q 'hubot-shipit' /opt/stackstorm/chatops/external-scripts.json || sed -i 's/.*\[.*/&\n  "hubot-shipit",/' /opt/stackstorm/chatops/external-scripts.json
+
 # Restart Chatops
 service st2chatops restart
 
