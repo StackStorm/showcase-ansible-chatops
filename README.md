@@ -1,11 +1,11 @@
 Ansible & ChatOps with Slack, Hubot and StackStorm - Vagrant demo
 ===========
-> Part of tutorial: [Ansible and ChatOps. Get started :rocket:](http://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
+> Part of tutorial: [Ansible and ChatOps. Get started :rocket:](https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
 
 ### Introduction
 This is quick demonstration of the [StackStorm](http://stackstorm.com/) event-driven automation platform running with [Ansible](http://ansible.com/) configuration management tool and [Hubot](https://hubot.github.com/) ChatOps engine. The objective is to operate servers with Ansible directly from [Slack](http://slack.com/) chat.
 
-![Ansible and ChatOps with Slack and Hubot](http://i.imgur.com/HWN8T78.png)
+[![Ansible and ChatOps with Slack and Hubot](http://i.imgur.com/HWN8T78.png)](https://stackstorm.com/2015/06/24/ansible-chatops-get-started-%f0%9f%9a%80/)
 
 It will get you up and running with `chatops` control VM with all St2 components prepared as well as Ansible and Hubot configured.
 Additionally, it installs 2 Ubuntu VMs: `web` server with nginx and `db` server with mysql.
@@ -31,7 +31,7 @@ vagrant up
 Installation takes some time (st2 engine comes with Python, RabbitMQ, PostgreSQL, MongoDB, OpenStack Mistral).
 
 #### 3. Try ChatOps
-You should see your bot online in Slack and now you're ready to type some chat commands. Don't forget to invite your bot into the Slack channel: `/invite <your-bot-name>`. Your first ChatOps command is: 
+You should see your bot online in Slack and now you're ready to type some chat commands. Don't forget to invite your bot into the Slack channel: `/invite @stanley`. Your first ChatOps command is: 
 ```
 !help
 ```
@@ -48,8 +48,8 @@ Full list of available commands from [st2-chatops-aliases](https://github.com/ar
 
 > Additionally check the results of performed commands in StackStorm control panel:  
 https://www.chatops/
-username: `testu`
-password: `testp`
+username: `demo`
+password: `demo`
 
 #### 4. Don't stop!
 Try it, explore the internals. For configuration see: [`ansible.sh`](ansible.sh), [`chatops.sh`](chatops.sh) which are usual Vagrant shell provisioner scripts.
@@ -57,8 +57,10 @@ Integrate your custom workflows and deployment mechanisms, you'll see how your w
 
 Feel the power of control center and may the force will be with you!
 
-----
+#### Need Help? Want to talk?
+[![Join our community Slack](https://stackstorm-community.herokuapp.com/badge.svg)](https://stackstorm.typeform.com/to/K76GRP) [![IRC](https://img.shields.io/irc/%23stackstorm.png)](http://webchat.freenode.net/?channels=stackstorm)
+
 We're always ready to help, feel free to:
-* ask questions on our [public Slack](https://stackstorm.typeform.com/to/K76GRP)
-* report bug, provide feature request or just give us a ✮ star at [GitHub st2](https://github.com/StackStorm/st2)
-* share your StackStorm story, [email us](mailto:support@stackstorm.com)
+* Ask questions on our public Slack or IRC
+* Report bug, provide feature request or just give us a ✮ star at [GitHub st2](https://github.com/StackStorm/st2)
+* Tell us how you use st2, share your StackStorm story. We love stories!

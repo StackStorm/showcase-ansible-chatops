@@ -3,8 +3,7 @@
 
 # Set Hubot Slack Token here
 HUBOT_SLACK_TOKEN = ENV['HUBOT_SLACK_TOKEN'] ? ENV['HUBOT_SLACK_TOKEN'] : ''
-ST2VER = ENV['ST2VER'] ? ENV['ST2VER'] : 'stable'
-HUBOT_NAME = ENV['HUBOT_NAME'] ? ENV['HUBOT_NAME'] : 'hubot'
+HUBOT_NAME = ENV['HUBOT_NAME'] ? ENV['HUBOT_NAME'] : 'stanley'
 
 VIRTUAL_MACHINES = {
   :web => {
@@ -28,8 +27,21 @@ unless Vagrant.has_plugin?('vagrant-hostmanager')
   exit system('vagrant', *ARGV)
 end
 
+# Check whether VM was already provisioned
+def provisioned?(vm_name)
+  File.exist?(".vagrant/machines/#{vm_name}/virtualbox/action_provision")
+end
+
+# 'HUBOT_SLACK_TOKEN' is required only if 'chatops' VM is not provisioned yet
+unless provisioned?('chatops') || HUBOT_SLACK_TOKEN.start_with?('xoxb-')
+  puts "Error! HUBOT_SLACK_TOKEN is required."
+  puts "Please specify it in your environment or in Vagrantfile."
+  exit
+end
+
 Vagrant.configure(2) do |config|
   # Global configuration for all boxes
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
   config.hostmanager.enabled = false
   config.hostmanager.manage_host = true
   config.hostmanager.ignore_private_ip = false
@@ -67,10 +79,20 @@ Vagrant.configure(2) do |config|
           vb.memory = 2048
         end
         # Start shell provisioning for chatops server
-        vm_config.vm.provision :shell, :inline => "curl -sSL https://stackstorm.com/packages/install.sh | bash -s -- --user=testu --password=testp"
-        vm_config.vm.provision :shell, :inline => "bash '/vagrant/validate.sh'"
-        vm_config.vm.provision :shell, :path => "ansible.sh"
-        vm_config.vm.provision :shell, :inline => "HUBOT_SLACK_TOKEN=#{HUBOT_SLACK_TOKEN} HUBOT_NAME=#{HUBOT_NAME} bash -c '/vagrant/chatops.sh'"
+        vm_config.vm.provision :shell,
+          # Use `privileged: false`, the script is initially executed from the `vagrant` user, `sudo`-ing when needed
+          # Allows to set StackStorm credentials for both `vagrant` and `root` users in `~/.st2`
+          privileged: false,
+          path: "https://stackstorm.com/packages/install.sh",
+          args: [
+            '--user=demo',
+            '--password=demo'
+          ],
+          env: {
+            'HUBOT_SLACK_TOKEN' => "#{HUBOT_SLACK_TOKEN}"
+          }
+        vm_config.vm.provision :shell, path: "ansible.sh"
+        vm_config.vm.provision :shell, path: "chatops.sh", env: {'HUBOT_NAME' => "#{HUBOT_NAME}"}
       end
     end
   end
