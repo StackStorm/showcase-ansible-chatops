@@ -26,6 +26,19 @@ unless Vagrant.has_plugin?('vagrant-hostmanager')
   system('vagrant plugin install vagrant-hostmanager') || exit!
   exit system('vagrant', *ARGV)
 end
+
+# Check whether VM was already provisioned
+def provisioned?(vm_name)
+  File.exist?(".vagrant/machines/#{vm_name}/virtualbox/action_provision")
+end
+
+# 'HUBOT_SLACK_TOKEN' is required only if 'chatops' VM is not provisioned yet
+unless provisioned?('chatops') || HUBOT_SLACK_TOKEN.start_with?('xoxb-')
+  puts "Error! HUBOT_SLACK_TOKEN is required."
+  puts "Please specify it in your environment or in Vagrantfile."
+  exit
+end
+
 Vagrant.configure(2) do |config|
   # Global configuration for all boxes
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"

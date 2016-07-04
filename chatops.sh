@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# Moved this check here out of Vagrantfile so it's only executed on provisioning
-#if [[ "$HUBOT_SLACK_TOKEN" != "xoxb"* ]]
-# then
-#    echo "Error! HUBOT_SLACK_TOKEN is required."
-#    echo "Please specify it in your environment, e.g.:"
-#    echo "export HUBOT_SLACK_TOKEN=xoxb-5187818172-I7wLh4oqzhAScwXZtPcHyxCu"
-#    exit 1
-#fi
-
 echo "#############################################################################################"
 echo "########################### Configure StackStorm and ChatOps ################################"
 
