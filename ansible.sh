@@ -5,10 +5,10 @@ echo "##########################################################################
 echo "########################### Prepare StackStorm and Ansible ##################################"
 
 # Install ansible integration pack
-st2 run packs.install packs=ansible
+st2 pack install ansible
 
 # Install our custom pack with ansible ChatOps command aliases
-st2 run packs.install packs=st2-chatops-aliases repo_url=armab/st2-chatops-aliases
+st2 pack install https://github.com/armab/st2_chatops_aliases
 
 # Needed by ansible
 apt-get install -y sshpass

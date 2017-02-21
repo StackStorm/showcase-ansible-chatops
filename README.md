@@ -36,7 +36,7 @@ You should see your bot online in Slack and now you're ready to type some chat c
 !help
 ```
 ![Ansible ChatOps with StackStorm, Hubot and Slack. List of ChatOps commands](https://i.imgur.com/LGLey2m.png)
-Full list of available commands from [st2-chatops-aliases](https://github.com/armab/st2-chatops-aliases) pack:
+Full list of available commands from [st2_chatops_aliases](https://github.com/armab/st2_chatops_aliases) pack:
 * [`!ansible <command>`](https://i.imgur.com/9xEgfP6.png) - Run ansible command on local machine
 * [`!status <hosts>`](https://i.imgur.com/ZOZgGnz.png) - Show status for hosts (ansible ping module)
 * [`!show nginx stats on <hosts>`](https://i.imgur.com/Wsvdx3W.png) - Show sorted http status codes from nginx on hosts
