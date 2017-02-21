@@ -5,7 +5,6 @@ echo "##########################################################################
 echo "########################### Configure StackStorm and ChatOps ################################"
 
 # Remove core st2 Aliases outside of this demo. Keep the ChatOps command list small
-rm -rf /opt/stackstorm/packs/packs/aliases/{show_git_clone,pack_info}.yaml
 rm -rf /opt/stackstorm/packs/st2/aliases/*
 
 ALIASES_TO_DELETE="st2.st2_actions_list st2.st2_executions_get st2.st2_executions_list \
