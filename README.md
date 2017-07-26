@@ -58,7 +58,7 @@ Integrate your custom workflows and deployment mechanisms, you'll see how your w
 Feel the power of control center and may the force will be with you!
 
 #### Need Help? Want to talk?
-[![Join our community Slack](https://stackstorm-community.herokuapp.com/badge.svg)](https://stackstorm.typeform.com/to/K76GRP) [![IRC](https://img.shields.io/irc/%23stackstorm.png)](http://webchat.freenode.net/?channels=stackstorm)
+[![Join our community Slack](https://stackstorm-community.herokuapp.com/badge.svg)](https://stackstorm.com/community-signup) [![IRC](https://img.shields.io/irc/%23stackstorm.png)](http://webchat.freenode.net/?channels=stackstorm)
 
 We're always ready to help, feel free to:
 * Ask questions on our public Slack or IRC
