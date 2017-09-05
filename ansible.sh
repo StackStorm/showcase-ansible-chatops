@@ -4,6 +4,9 @@ set -e
 echo "#############################################################################################"
 echo "########################### Prepare StackStorm and Ansible ##################################"
 
+# Install Ansible core dependencies
+sudo apt-get install -y gcc libkrb5-dev
+
 # Install ansible integration pack
 st2 pack install ansible
 
