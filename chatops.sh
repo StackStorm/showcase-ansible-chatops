@@ -21,16 +21,18 @@ sed -i "s/.*export HUBOT_NAME.*/export HUBOT_NAME=${HUBOT_NAME}/" /opt/stackstor
 sed -i "s/.*export ST2_WEBUI_URL.*/export ST2_WEBUI_URL=https:\/\/`hostname`/" /opt/stackstorm/chatops/st2chatops.env
 
 # Install hubot-shipit
-cd /opt/stackstorm/chatops && npm install hubot-shipit --save
+cd /opt/stackstorm/chatops && sudo npm install hubot-shipit --save
 grep -q 'hubot-shipit' /opt/stackstorm/chatops/external-scripts.json || sed -i 's/.*\[.*/&\n  "hubot-shipit",/' /opt/stackstorm/chatops/external-scripts.json
+
+# Wipe st2chatops logs before checking for service readiness
+[ -f /var/log/st2/st2chatops.log ] && > /var/log/st2/st2chatops.log
 
 # Restart Chatops
 service st2chatops restart
 
 # Wait 30 seconds for Hubot to start
-> /var/log/st2/st2chatops.log
 for i in {1..30}; do
-    ACTIONEXIT=`grep -q 'Slack client now connected' /var/log/st2/st2chatops.log && grep -q 'INFO [[:digit:]]\+ commands are loaded' /var/log/st2/st2chatops.log 2> /dev/null; echo $?`
+    ACTIONEXIT=`grep -q 'INFO Connected to Slack' /var/log/st2/st2chatops.log && grep -q 'INFO [[:digit:]]\+ commands are loaded' /var/log/st2/st2chatops.log 2> /dev/null; echo $?`
     if [ ${ACTIONEXIT} -eq 0 ]; then
         break
     fi

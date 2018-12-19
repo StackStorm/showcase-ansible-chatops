@@ -91,8 +91,8 @@ Vagrant.configure(2) do |config|
           env: {
             'HUBOT_SLACK_TOKEN' => "#{HUBOT_SLACK_TOKEN}"
           }
-        vm_config.vm.provision :shell, path: "ansible.sh"
-        vm_config.vm.provision :shell, path: "chatops.sh", env: {'HUBOT_NAME' => "#{HUBOT_NAME}"}
+        vm_config.vm.provision :shell, privileged: true, path: "ansible.sh"
+        vm_config.vm.provision :shell, privileged: true, path: "chatops.sh", env: {'HUBOT_NAME' => "#{HUBOT_NAME}"}
       end
     end
   end
